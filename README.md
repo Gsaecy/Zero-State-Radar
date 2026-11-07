@@ -3,7 +3,7 @@
 > 为 **DeepSeek Harness** 做的赛博朋克 HUD 皮肤：恒定夜间配色，以及空会话时才会出现的 **零态雷达扫描**。
 
 <p align="center">
-  <img src="docs/images/01-home.png" alt="带侧边栏的主页：点阵世界地图、城市航线与左下角遥测监控" width="900">
+  <img src="docs/images/home.png" alt="带侧边栏的主页：点阵世界地图、城市航线与左下角遥测监控" width="900">
 </p>
 
 空会话里，一条扫描线自上而下扫过，扫过的位置浮现**点阵式真实海岸线世界地图**；城市节点与航线随后逐条绘出，左下角的数据监控在信号干扰后浮现。发出第一条消息的瞬间，这一切整体退场，不留痕迹。
@@ -19,7 +19,7 @@ English: a cyberpunk HUD theme for DeepSeek Harness, with a *Zero-State Radar* �
 ### 1. 新会话 —— 扫描线自上而下
 
 <p align="center">
-  <img src="docs/images/02-session.png" alt="新会话：扫描线自上而下，扫过的位置浮现点阵世界地图" width="900">
+  <img src="docs/images/session.png" alt="新会话：扫描线自上而下，扫过的位置浮现点阵世界地图" width="900">
 </p>
 
 线本身就是边界：**线以下是全黑**，线扫过之后地图才在 96px 的范围内渐显出来。
