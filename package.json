@@ -1,0 +1,48 @@
+{
+  "name": "dsh-cyberdeck",
+  "version": "0.1.0",
+  "description": "Zero-State Radar — cyberpunk HUD theme for DeepSeek Harness, with a radar sweep, dotted world map and telemetry panel on the empty chat.",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "theme",
+    "skin",
+    "cyberpunk",
+    "hud",
+    "radar",
+    "map"
+  ],
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE",
+    "docs"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [],
+      "platform": "web"
+    }
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gsaecy/Zero-State-Radar.git"
+  },
+  "homepage": "https://github.com/Gsaecy/Zero-State-Radar#readme",
+  "bugs": {
+    "url": "https://github.com/Gsaecy/Zero-State-Radar/issues"
+  }
+}

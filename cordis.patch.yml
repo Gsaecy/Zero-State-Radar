@@ -1,0 +1,6 @@
+# dsh-cyberdeck — DSH bundle patch
+#
+# 纯界面皮肤：宿主半侧不做任何事，浏览器半侧由 package.json 的 dsh.client 声明。
+- insert:
+    - id: dsh-cyberdeck
+      name: dsh-cyberdeck
