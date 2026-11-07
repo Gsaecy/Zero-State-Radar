@@ -58,10 +58,10 @@ English: a cyberpunk HUD theme for DeepSeek Harness, with a *Zero-State Radar* �
 plugin_manager install_bundle target=file:/绝对路径/dsh-cyberdeck
 ```
 
-或从 npm（上架后）：
+或直接用预构建包（免构建授权）：
 
 ```bash
-plugin_manager install_bundle target=dsh-cyberdeck
+plugin_manager install_bundle target=https://github.com/Gsaecy/Zero-State-Radar/releases/latest/download/dsh-cyberdeck.tgz
 ```
 
 安装后重启 DSH，或刷新页面（⌘R）。
