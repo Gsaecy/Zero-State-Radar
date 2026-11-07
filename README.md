@@ -116,7 +116,7 @@ plugin_manager install_bundle target=dsh-cyberdeck
 
 ## 许可
 
-MIT © 2025
+MIT © 2026
 
 ---
 
