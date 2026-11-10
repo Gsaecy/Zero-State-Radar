@@ -114,26 +114,57 @@ plugin_manager install_bundle target=https://github.com/Gsaecy/Zero-State-Radar/
 - 临时关掉皮肤：<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>K</kbd>，或控制台
   `__cyberdeck.off()`。
 
+### 升级 / 重装（Windows 注意）
+
+市场是「先卸载、再安装」。DSH 正在运行时，旧包的文件可能还被占用，pnpm 在 Windows
+上会报 `ERR_PNPM_EPERM`（`rename ... -> node_modules\dsh-cyberdeck`），市场里就显示
+「无法安装」。稳妥顺序：
+
+1. **完全退出 DeepSeek Harness**（不是刷新页面）；
+2. 重新打开后，再在市场里点安装 / 更新。
+
+如果之前用本地目录（`link:`）装过，卸载后 `node_modules\dsh-cyberdeck` 可能留下一个
+指向旧目录的 junction，会挡住下次安装（同样报 EPERM）。把那个 junction 删掉再装即可
+（只删链接，不会动你的工作区），或者干脆按上面顺序先退出再操作。
+
+Linux / macOS 没有这个 Windows 文件占用问题，但「先退出再更新」仍然最稳。
+
 ### 发布新版本
 
 1. 改 `package.json` 的 `version`，在 [CHANGELOG.md](CHANGELOG.md) 记一笔，提交并推送；
 2. 打 tag 并推送，CI 会自动打包并发 Release：
 
 ```bash
-git tag -a v0.1.2 -m "Zero-State Radar v0.1.2"
-git push origin v0.1.2
+git tag -a v0.1.3 -m "Zero-State Radar v0.1.3"
+git push origin v0.1.3
 ```
 
 [`.github/workflows/release.yml`](.github/workflows/release.yml) 会：校验 tag 与
 `package.json` 版本一致 → `npm pack` → 把产物改名成 `dsh-cyberdeck.tgz` →
 创建/更新对应 tag 的 Release 并上传附件。
 
-- 想自定义 Release 说明，放一个 `release-notes/v0.1.2.md`（没有则用 GitHub 自动生成的变更说明）；
+- 想自定义 Release 说明，放一个 `release-notes/v0.1.3.md`（没有则用 GitHub 自动生成的变更说明）；
 - 想修某个已发布版本的附件、或补发说明：Actions → **release** → **Run workflow**，
-  填上已有 tag（如 `v0.1.1`）；Release 已存在时只覆盖附件，不会新建 Release；
+  填上已有 tag（如 `v0.1.2`）；Release 已存在时只覆盖附件，不会新建 Release；
 - 手动发布也可以：`npm pack` → 产物改名成 `dsh-cyberdeck.tgz` 上传到 Release。
   安装 URL 依赖这个固定附件名（`releases/latest/download/dsh-cyberdeck.tgz`）；
 - tarball 必须是 `npm pack` 产物（根目录为 `package/`），否则 pnpm 装不上。
+
+### 发 npm（可选，但推荐）
+
+插件市场的安装优先级是 **npm 包 > GitHub Release tarball > 整仓源码**。发 npm 后，
+市场会优先走 registry 安装——大陆网络访问 `registry.npmjs.org`（以及 npmmirror 等
+fallback）比访问 `release-assets.githubusercontent.com` 稳得多。
+
+1. 在 npm 建一个 **Automation token**；
+2. 仓库 Settings → Secrets and variables → Actions 添加 Secret `NPM_TOKEN`；
+3. 之后再打 tag 时，workflow 的 `npm-publish` job 会 `npm publish --access public`
+   （版本已存在会自动跳过；没配 `NPM_TOKEN` 时该 job 只打印跳过，不影响 Release）；
+4. 也可以不依赖 CI，本地 `npm publish` 一次即可。
+
+> npm 包名是 `dsh-cyberdeck`（`package.json` 的 `name`）；`repository` 字段指回本仓库，
+> 市场据此把 npm 包和 GitHub 条目对上。收录列表（awesome-dsh-plugin）里的 `npm`
+> 字段是那边采集刷新后才更新的。
 
 ## 触发条件
 

@@ -1,17 +1,22 @@
 name: release
 
-# 打 tag 即发布：打包预构建 tarball（npm pack），上传成 Release 附件。
+# 打 tag 即发布：打包预构建 tarball（npm pack），上传成 Release 附件；
+# 如果仓库配置了 NPM_TOKEN secret，还会把同一个包发到 npm。
 # 附件名固定为 dsh-cyberdeck.tgz，安装 URL 依赖这个固定名：
 #   https://github.com/Gsaecy/Zero-State-Radar/releases/latest/download/dsh-cyberdeck.tgz
 #
 # 常规用法：package.json 的 version 先改好并提交，然后
-#   git tag -a v0.1.2 -m "Zero-State Radar v0.1.2" && git push origin v0.1.2
-# 想自定义 Release 说明就放 release-notes/<tag>.md（例如 release-notes/v0.1.2.md），
+#   git tag -a v0.1.3 -m "Zero-State Radar v0.1.3" && git push origin v0.1.3
+# 想自定义 Release 说明就放 release-notes/<tag>.md（例如 release-notes/v0.1.3.md），
 # 没有该文件时用 GitHub 自动生成的变更说明。
 #
-# 手动重发（修附件、补发说明）：
-#   Actions → release → Run workflow，输入已有 tag（例如 v0.1.1）；
-#   Release 已存在时只覆盖附件，不会新建 Release。
+# 手动重发（修附件、补发说明、补发 npm）：
+#   Actions → release → Run workflow，输入已有 tag（例如 v0.1.2）；
+#   Release 已存在时只覆盖附件，不会新建 Release；npm 上已存在的版本会跳过。
+#
+# 为什么还要发 npm：插件市场按「npm 包 > Release tarball > 整仓源码」的顺序安装，
+# 大陆网络访问 release-assets.githubusercontent.com 经常失败，而 registry 通常可达
+# （DSH 还支持 npmmirror 等 fallback）。发 npm 后市场会优先用 registry 安装。
 
 on:
   push:
@@ -20,7 +25,7 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: '要发布的 tag（如 v0.1.1）；留空则用当前 ref'
+        description: '要发布的 tag（如 v0.1.2）；留空则用当前 ref'
         required: false
 
 permissions:
@@ -79,3 +84,34 @@ jobs:
                 --generate-notes
             fi
           fi
+
+  npm-publish:
+    # 可选：仓库里配了 NPM_TOKEN secret 才会真的发 npm；没配就打印一句跳过。
+    # 建议用 npm 的 Automation token（绕过 2FA 交互）。
+    needs: release
+    runs-on: ubuntu-latest
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.ref_name }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+
+      - name: Publish to npm
+        if: ${{ env.NODE_AUTH_TOKEN != '' }}
+        run: |
+          version="$(node -p 'require("./package.json").version')"
+          if npm view "dsh-cyberdeck@${version}" version >/dev/null 2>&1; then
+            echo "dsh-cyberdeck@${version} 已经在 npm 上，跳过发布"
+          else
+            npm publish --access public
+          fi
+
+      - name: Skip npm publish (no NPM_TOKEN secret)
+        if: ${{ env.NODE_AUTH_TOKEN == '' }}
+        run: echo "仓库没有配置 NPM_TOKEN secret，跳过 npm 发布（只发 GitHub Release）"

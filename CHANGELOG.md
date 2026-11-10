@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.1.3 — 2026-11-10
+
+安装 / 发布改进，皮肤本身没有改动。
+
+- CI 增加可选 npm 发布：仓库配置 `NPM_TOKEN` secret 后，打 tag 会同时
+  `npm publish --access public`（版本已存在自动跳过；没配 secret 时自动跳过）。
+  市场安装优先级是 npm 包 > Release tarball，发 npm 后大陆用户走 registry
+  （DSH 支持 npmmirror 等 fallback），不必依赖被污染的
+  `release-assets.githubusercontent.com`。
+- README 补充 Windows 升级 / 重装说明：市场「先卸载再装」，DSH 运行中会撞文件占用，
+  pnpm 报 `ERR_PNPM_EPERM`；应先完全退出 DSH 再更新。`link:` 安装卸载后可能留下
+  指向旧目录的 junction，会挡住重装，删掉链接再装即可。
+
 ## v0.1.2 — 2026-11-10
 
 ### 主题
