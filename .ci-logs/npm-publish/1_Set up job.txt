@@ -1,0 +1,33 @@
+﻿2026-11-10T14:08:37.8155871Z Current runner version: '2.338.2'
+2026-11-10T14:08:37.8175832Z ##[group]Runner Image Provisioner
+2026-11-10T14:08:37.8176540Z Hosted Compute Agent
+2026-11-10T14:08:37.8176903Z Version: 20261028.624
+2026-11-10T14:08:37.8177306Z Commit: 54898b74c23fde5556c9b3c3a2290865feef0dfe
+2026-11-10T14:08:37.8177796Z Build Date: 2026-10-28T21:51:42Z
+2026-11-10T14:08:37.8178231Z Worker ID: {aca28b61-a2e7-47dd-9c79-91907692d9dc}
+2026-11-10T14:08:37.8178725Z Region: centralus
+2026-11-10T14:08:37.8179065Z Cloud: Azure
+2026-11-10T14:08:37.8179420Z ##[endgroup]
+2026-11-10T14:08:37.8180439Z ##[group]Operating System
+2026-11-10T14:08:37.8180809Z Ubuntu
+2026-11-10T14:08:37.8181208Z 26.04.1
+2026-11-10T14:08:37.8181527Z LTS
+2026-11-10T14:08:37.8181830Z ##[endgroup]
+2026-11-10T14:08:37.8182208Z ##[group]Runner Image
+2026-11-10T14:08:37.8182597Z Image: ubuntu-26.04
+2026-11-10T14:08:37.8183207Z Version: 20261101.186.1
+2026-11-10T14:08:37.8183899Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261101.186/images/ubuntu/Ubuntu2604-Readme.md
+2026-11-10T14:08:37.8184965Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261101.186
+2026-11-10T14:08:37.8185559Z ##[endgroup]
+2026-11-10T14:08:37.8186553Z ##[group]GITHUB_TOKEN Permissions
+2026-11-10T14:08:37.8187999Z Contents: write
+2026-11-10T14:08:37.8188489Z Metadata: read
+2026-11-10T14:08:37.8188833Z ##[endgroup]
+2026-11-10T14:08:37.8190253Z Secret source: Actions
+2026-11-10T14:08:37.8190889Z Cache mode: write
+2026-11-10T14:08:37.8191452Z Prepare workflow directory
+2026-11-10T14:08:37.8564163Z Prepare all required actions
+2026-11-10T14:08:37.8597375Z Getting action download info
+2026-11-10T14:08:38.0898644Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-11-10T14:08:38.2360717Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2026-11-10T14:08:38.4252323Z Complete job name: npm-publish

@@ -1,0 +1,209 @@
+﻿2026-11-10T14:08:37.8156302Z Current runner version: '2.338.2'
+2026-11-10T14:08:37.8175858Z ##[group]Runner Image Provisioner
+2026-11-10T14:08:37.8176542Z Hosted Compute Agent
+2026-11-10T14:08:37.8176904Z Version: 20261028.624
+2026-11-10T14:08:37.8177309Z Commit: 54898b74c23fde5556c9b3c3a2290865feef0dfe
+2026-11-10T14:08:37.8177798Z Build Date: 2026-10-28T21:51:42Z
+2026-11-10T14:08:37.8178233Z Worker ID: {aca28b61-a2e7-47dd-9c79-91907692d9dc}
+2026-11-10T14:08:37.8178727Z Region: centralus
+2026-11-10T14:08:37.8179067Z Cloud: Azure
+2026-11-10T14:08:37.8179421Z ##[endgroup]
+2026-11-10T14:08:37.8180443Z ##[group]Operating System
+2026-11-10T14:08:37.8180811Z Ubuntu
+2026-11-10T14:08:37.8181209Z 26.04.1
+2026-11-10T14:08:37.8181528Z LTS
+2026-11-10T14:08:37.8181831Z ##[endgroup]
+2026-11-10T14:08:37.8182210Z ##[group]Runner Image
+2026-11-10T14:08:37.8182601Z Image: ubuntu-26.04
+2026-11-10T14:08:37.8183210Z Version: 20261101.186.1
+2026-11-10T14:08:37.8184053Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261101.186/images/ubuntu/Ubuntu2604-Readme.md
+2026-11-10T14:08:37.8184994Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261101.186
+2026-11-10T14:08:37.8185561Z ##[endgroup]
+2026-11-10T14:08:37.8186555Z ##[group]GITHUB_TOKEN Permissions
+2026-11-10T14:08:37.8188004Z Contents: write
+2026-11-10T14:08:37.8188491Z Metadata: read
+2026-11-10T14:08:37.8188834Z ##[endgroup]
+2026-11-10T14:08:37.8190257Z Secret source: Actions
+2026-11-10T14:08:37.8190891Z Cache mode: write
+2026-11-10T14:08:37.8191454Z Prepare workflow directory
+2026-11-10T14:08:37.8564207Z Prepare all required actions
+2026-11-10T14:08:37.8597411Z Getting action download info
+2026-11-10T14:08:38.0898681Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-11-10T14:08:38.2360749Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2026-11-10T14:08:38.4252355Z Complete job name: npm-publish
+2026-11-10T14:08:38.4753411Z ##[group]Run actions/checkout@v4
+2026-11-10T14:08:38.4753869Z with:
+2026-11-10T14:08:38.4754105Z   ref: v0.1.3
+2026-11-10T14:08:38.4754376Z   repository: Gsaecy/Zero-State-Radar
+2026-11-10T14:08:38.4756583Z   token: ***
+2026-11-10T14:08:38.4756826Z   ssh-strict: true
+2026-11-10T14:08:38.4757083Z   ssh-user: git
+2026-11-10T14:08:38.4757335Z   persist-credentials: true
+2026-11-10T14:08:38.4757615Z   clean: true
+2026-11-10T14:08:38.4757875Z   sparse-checkout-cone-mode: true
+2026-11-10T14:08:38.4758165Z   fetch-depth: 1
+2026-11-10T14:08:38.4758410Z   fetch-tags: false
+2026-11-10T14:08:38.4758678Z   show-progress: true
+2026-11-10T14:08:38.4758931Z   lfs: false
+2026-11-10T14:08:38.4759163Z   submodules: false
+2026-11-10T14:08:38.4759417Z   set-safe-directory: true
+2026-11-10T14:08:38.4759709Z   allow-unsafe-pr-checkout: false
+2026-11-10T14:08:38.4760058Z env:
+2026-11-10T14:08:38.4760282Z   TAG: v0.1.3
+2026-11-10T14:08:38.4760526Z   NODE_AUTH_TOKEN: 
+2026-11-10T14:08:38.4760802Z ##[endgroup]
+2026-11-10T14:08:38.6971148Z Syncing repository: Gsaecy/Zero-State-Radar
+2026-11-10T14:08:38.6972316Z ##[group]Getting Git version info
+2026-11-10T14:08:38.6972764Z Working directory is '/home/runner/work/Zero-State-Radar/Zero-State-Radar'
+2026-11-10T14:08:38.6973644Z [command]/usr/bin/git version
+2026-11-10T14:08:38.6989992Z git version 2.56.0
+2026-11-10T14:08:38.7002766Z ##[endgroup]
+2026-11-10T14:08:38.7013511Z Temporarily overriding HOME='/home/runner/work/_temp/36fb7d71-2b53-4250-a72e-bbc4ea22ad16' before making global git config changes
+2026-11-10T14:08:38.7014858Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-10T14:08:38.7017395Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Zero-State-Radar/Zero-State-Radar
+2026-11-10T14:08:38.7080767Z Deleting the contents of '/home/runner/work/Zero-State-Radar/Zero-State-Radar'
+2026-11-10T14:08:38.7083471Z ##[group]Initializing the repository
+2026-11-10T14:08:38.7086457Z [command]/usr/bin/git init /home/runner/work/Zero-State-Radar/Zero-State-Radar
+2026-11-10T14:08:38.7185145Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-10T14:08:38.7185775Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-10T14:08:38.7186344Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-10T14:08:38.7186786Z hint: call:
+2026-11-10T14:08:38.7187017Z hint:
+2026-11-10T14:08:38.7187339Z hint: 	git config --global init.defaultBranch <name>
+2026-11-10T14:08:38.7187703Z hint:
+2026-11-10T14:08:38.7188041Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-10T14:08:38.7188565Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-10T14:08:38.7189008Z hint:
+2026-11-10T14:08:38.7189275Z hint: 	git branch -m <name>
+2026-11-10T14:08:38.7189542Z hint:
+2026-11-10T14:08:38.7189949Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-10T14:08:38.7198880Z Initialized empty Git repository in /home/runner/work/Zero-State-Radar/Zero-State-Radar/.git/
+2026-11-10T14:08:38.7208115Z [command]/usr/bin/git remote add origin https://github.com/Gsaecy/Zero-State-Radar
+2026-11-10T14:08:38.7254036Z ##[endgroup]
+2026-11-10T14:08:38.7254765Z ##[group]Disabling automatic garbage collection
+2026-11-10T14:08:38.7256786Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-10T14:08:38.7284604Z ##[endgroup]
+2026-11-10T14:08:38.7285078Z ##[group]Setting up auth
+2026-11-10T14:08:38.7289525Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-10T14:08:38.7316073Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-10T14:08:38.7671737Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-10T14:08:38.7699544Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-10T14:08:38.7924589Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-10T14:08:38.7955972Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-10T14:08:38.8188286Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-10T14:08:38.8224062Z ##[endgroup]
+2026-11-10T14:08:38.8224798Z ##[group]Fetching the repository
+2026-11-10T14:08:38.8233731Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/heads/v0.1.3*:refs/remotes/origin/v0.1.3* +refs/tags/v0.1.3*:refs/tags/v0.1.3*
+2026-11-10T14:08:39.3482513Z From https://github.com/Gsaecy/Zero-State-Radar
+2026-11-10T14:08:39.3503991Z  * [new tag]         v0.1.3     -> v0.1.3
+2026-11-10T14:08:39.3515262Z ##[endgroup]
+2026-11-10T14:08:39.3515983Z ##[group]Determining the checkout info
+2026-11-10T14:08:39.3516689Z [command]/usr/bin/git branch --list --remote origin/v0.1.3
+2026-11-10T14:08:39.3529475Z [command]/usr/bin/git tag --list v0.1.3
+2026-11-10T14:08:39.3555003Z v0.1.3
+2026-11-10T14:08:39.3563549Z ##[endgroup]
+2026-11-10T14:08:39.3564856Z [command]/usr/bin/git sparse-checkout disable
+2026-11-10T14:08:39.3620523Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-10T14:08:39.3648500Z ##[group]Checking out the ref
+2026-11-10T14:08:39.3649610Z [command]/usr/bin/git checkout --progress --force refs/tags/v0.1.3
+2026-11-10T14:08:39.3720653Z Note: switching to 'refs/tags/v0.1.3'.
+2026-11-10T14:08:39.3721203Z 
+2026-11-10T14:08:39.3721670Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-11-10T14:08:39.3722908Z changes and commit them, and you can discard any commits you make in this
+2026-11-10T14:08:39.3724165Z state without impacting any branches by switching back to a branch.
+2026-11-10T14:08:39.3725066Z 
+2026-11-10T14:08:39.3725465Z If you want to create a new branch to retain commits you create, you may
+2026-11-10T14:08:39.3726474Z do so (now or later) by using -c with the switch command. Example:
+2026-11-10T14:08:39.3727091Z 
+2026-11-10T14:08:39.3727305Z   git switch -c <new-branch-name>
+2026-11-10T14:08:39.3727697Z 
+2026-11-10T14:08:39.3727908Z Or undo this operation with:
+2026-11-10T14:08:39.3728256Z 
+2026-11-10T14:08:39.3728444Z   git switch -
+2026-11-10T14:08:39.3728711Z 
+2026-11-10T14:08:39.3729203Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-11-10T14:08:39.3729907Z 
+2026-11-10T14:08:39.3730551Z HEAD is now at 0b313f5 ci: optional npm publish on tag; docs for Windows install/upgrade (v0.1.3)
+2026-11-10T14:08:39.3733518Z ##[endgroup]
+2026-11-10T14:08:39.3768218Z [command]/usr/bin/git log -1 --format=%H
+2026-11-10T14:08:39.3791410Z 0b313f5432588ccd7de04c2ffbb8435d775391ab
+2026-11-10T14:08:39.4079512Z ##[group]Run actions/setup-node@v4
+2026-11-10T14:08:39.4080178Z with:
+2026-11-10T14:08:39.4080651Z   node-version: 22
+2026-11-10T14:08:39.4081233Z   registry-url: https://registry.npmjs.org
+2026-11-10T14:08:39.4081955Z   always-auth: false
+2026-11-10T14:08:39.4082482Z   check-latest: false
+2026-11-10T14:08:39.4088131Z   token: ***
+2026-11-10T14:08:39.4088605Z env:
+2026-11-10T14:08:39.4089049Z   TAG: v0.1.3
+2026-11-10T14:08:39.4089524Z   NODE_AUTH_TOKEN: 
+2026-11-10T14:08:39.4090014Z ##[endgroup]
+2026-11-10T14:08:39.5081710Z (node:2202) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-10T14:08:39.5083839Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-10T14:08:39.5088732Z Found in cache @ /opt/hostedtoolcache/node/22.23.4/x64
+2026-11-10T14:08:39.5089936Z ##[group]Environment details
+2026-11-10T14:08:39.8249506Z node: v22.23.4
+2026-11-10T14:08:39.8250026Z npm: 10.9.9
+2026-11-10T14:08:39.8250510Z yarn: 1.22.22
+2026-11-10T14:08:39.8251414Z ##[endgroup]
+2026-11-10T14:08:39.8478742Z ##[group]Run version="$(node -p 'require("./package.json").version')"
+2026-11-10T14:08:39.8479321Z [36;1mversion="$(node -p 'require("./package.json").version')"[0m
+2026-11-10T14:08:39.8479843Z [36;1mif npm view "dsh-cyberdeck@${version}" version >/dev/null 2>&1; then[0m
+2026-11-10T14:08:39.8480316Z [36;1m  echo "dsh-cyberdeck@${version} 已经在 npm 上，跳过发布"[0m
+2026-11-10T14:08:39.8480677Z [36;1melse[0m
+2026-11-10T14:08:39.8480969Z [36;1m  npm publish --access public[0m
+2026-11-10T14:08:39.8481291Z [36;1mfi[0m
+2026-11-10T14:08:39.8531835Z shell: /usr/bin/bash -e {0}
+2026-11-10T14:08:39.8532193Z env:
+2026-11-10T14:08:39.8532460Z   TAG: v0.1.3
+2026-11-10T14:08:39.8532777Z   NODE_AUTH_TOKEN: XXXXX-XXXXX-XXXXX-XXXXX
+2026-11-10T14:08:39.8533405Z   NPM_CONFIG_USERCONFIG: /home/runner/work/_temp/.npmrc
+2026-11-10T14:08:39.8533773Z ##[endgroup]
+2026-11-10T14:08:40.9108248Z npm notice
+2026-11-10T14:08:40.9109357Z npm notice 📦  dsh-cyberdeck@0.1.3
+2026-11-10T14:08:40.9109843Z npm notice Tarball Contents
+2026-11-10T14:08:40.9110184Z npm notice 1.1kB LICENSE
+2026-11-10T14:08:40.9110536Z npm notice 10.5kB README.md
+2026-11-10T14:08:40.9110937Z npm notice 206B cordis.patch.yml
+2026-11-10T14:08:40.9111367Z npm notice 346.3kB docs/images/home.png
+2026-11-10T14:08:40.9111787Z npm notice 265.4kB docs/images/session.png
+2026-11-10T14:08:40.9112184Z npm notice 9.0kB docs/notes-zh.md
+2026-11-10T14:08:40.9112568Z npm notice 374.1kB lib/client.js
+2026-11-10T14:08:40.9112919Z npm notice 309B lib/index.js
+2026-11-10T14:08:40.9113420Z npm notice 1.1kB package.json
+2026-11-10T14:08:40.9113801Z npm notice Tarball Details
+2026-11-10T14:08:40.9114183Z npm notice name: dsh-cyberdeck
+2026-11-10T14:08:40.9114537Z npm notice version: 0.1.3
+2026-11-10T14:08:40.9114938Z npm notice filename: dsh-cyberdeck-0.1.3.tgz
+2026-11-10T14:08:40.9115323Z npm notice package size: 671.1 kB
+2026-11-10T14:08:40.9115709Z npm notice unpacked size: 1.0 MB
+2026-11-10T14:08:40.9116450Z npm notice shasum: 4748604a92b9a7dc1e217c1e7dae2ac7423fa3f6
+2026-11-10T14:08:40.9116954Z npm notice integrity: sha512-mtplic57oZhUU[...]5Hc/Bx23TOgjA==
+2026-11-10T14:08:40.9117340Z npm notice total files: 9
+2026-11-10T14:08:40.9117593Z npm notice
+2026-11-10T14:08:40.9120464Z npm notice Publishing to https://registry.npmjs.org/ with tag latest and public access
+2026-11-10T14:08:41.9714675Z npm error code E404
+2026-11-10T14:08:41.9715130Z npm error 404 Not Found - PUT https://registry.npmjs.org/dsh-cyberdeck - Not found
+2026-11-10T14:08:41.9715449Z npm error 404
+2026-11-10T14:08:41.9715757Z npm error 404  'dsh-cyberdeck@0.1.3' is not in this registry.
+2026-11-10T14:08:41.9716013Z npm error 404
+2026-11-10T14:08:41.9716261Z npm error 404 Note that you can also install from a
+2026-11-10T14:08:41.9716589Z npm error 404 tarball, folder, http url, or git url.
+2026-11-10T14:08:41.9720559Z npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-10T14_08_40_557Z-debug-0.log
+2026-11-10T14:08:41.9903727Z ##[error]Process completed with exit code 1.
+2026-11-10T14:08:42.0009934Z Post job cleanup.
+2026-11-10T14:08:42.0570836Z [command]/usr/bin/git version
+2026-11-10T14:08:42.0602215Z git version 2.56.0
+2026-11-10T14:08:42.0626138Z Temporarily overriding HOME='/home/runner/work/_temp/07310954-a6e1-4792-8f26-cf5fb38a7ec7' before making global git config changes
+2026-11-10T14:08:42.0626874Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-10T14:08:42.0629775Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Zero-State-Radar/Zero-State-Radar
+2026-11-10T14:08:42.0665842Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-10T14:08:42.0694582Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-10T14:08:42.0926853Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-10T14:08:42.0949671Z http.https://github.com/.extraheader
+2026-11-10T14:08:42.0959125Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-10T14:08:42.0990843Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-10T14:08:42.1221892Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-10T14:08:42.1250106Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-10T14:08:42.1592043Z Cleaning up orphan processes
+2026-11-10T14:08:42.1847534Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

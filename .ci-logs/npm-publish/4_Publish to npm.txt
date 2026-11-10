@@ -1,0 +1,45 @@
+﻿2026-11-10T14:08:39.8478710Z ##[group]Run version="$(node -p 'require("./package.json").version')"
+2026-11-10T14:08:39.8479317Z [36;1mversion="$(node -p 'require("./package.json").version')"[0m
+2026-11-10T14:08:39.8479839Z [36;1mif npm view "dsh-cyberdeck@${version}" version >/dev/null 2>&1; then[0m
+2026-11-10T14:08:39.8480311Z [36;1m  echo "dsh-cyberdeck@${version} 已经在 npm 上，跳过发布"[0m
+2026-11-10T14:08:39.8480674Z [36;1melse[0m
+2026-11-10T14:08:39.8480965Z [36;1m  npm publish --access public[0m
+2026-11-10T14:08:39.8481288Z [36;1mfi[0m
+2026-11-10T14:08:39.8531805Z shell: /usr/bin/bash -e {0}
+2026-11-10T14:08:39.8532189Z env:
+2026-11-10T14:08:39.8532457Z   TAG: v0.1.3
+2026-11-10T14:08:39.8532756Z   NODE_AUTH_TOKEN: XXXXX-XXXXX-XXXXX-XXXXX
+2026-11-10T14:08:39.8533401Z   NPM_CONFIG_USERCONFIG: /home/runner/work/_temp/.npmrc
+2026-11-10T14:08:39.8533769Z ##[endgroup]
+2026-11-10T14:08:40.9108202Z npm notice
+2026-11-10T14:08:40.9109351Z npm notice 📦  dsh-cyberdeck@0.1.3
+2026-11-10T14:08:40.9109760Z npm notice Tarball Contents
+2026-11-10T14:08:40.9110182Z npm notice 1.1kB LICENSE
+2026-11-10T14:08:40.9110533Z npm notice 10.5kB README.md
+2026-11-10T14:08:40.9110934Z npm notice 206B cordis.patch.yml
+2026-11-10T14:08:40.9111364Z npm notice 346.3kB docs/images/home.png
+2026-11-10T14:08:40.9111784Z npm notice 265.4kB docs/images/session.png
+2026-11-10T14:08:40.9112181Z npm notice 9.0kB docs/notes-zh.md
+2026-11-10T14:08:40.9112566Z npm notice 374.1kB lib/client.js
+2026-11-10T14:08:40.9112917Z npm notice 309B lib/index.js
+2026-11-10T14:08:40.9113418Z npm notice 1.1kB package.json
+2026-11-10T14:08:40.9113798Z npm notice Tarball Details
+2026-11-10T14:08:40.9114181Z npm notice name: dsh-cyberdeck
+2026-11-10T14:08:40.9114535Z npm notice version: 0.1.3
+2026-11-10T14:08:40.9114935Z npm notice filename: dsh-cyberdeck-0.1.3.tgz
+2026-11-10T14:08:40.9115321Z npm notice package size: 671.1 kB
+2026-11-10T14:08:40.9115707Z npm notice unpacked size: 1.0 MB
+2026-11-10T14:08:40.9116439Z npm notice shasum: 4748604a92b9a7dc1e217c1e7dae2ac7423fa3f6
+2026-11-10T14:08:40.9116951Z npm notice integrity: sha512-mtplic57oZhUU[...]5Hc/Bx23TOgjA==
+2026-11-10T14:08:40.9117337Z npm notice total files: 9
+2026-11-10T14:08:40.9117591Z npm notice
+2026-11-10T14:08:40.9120462Z npm notice Publishing to https://registry.npmjs.org/ with tag latest and public access
+2026-11-10T14:08:41.9714625Z npm error code E404
+2026-11-10T14:08:41.9715125Z npm error 404 Not Found - PUT https://registry.npmjs.org/dsh-cyberdeck - Not found
+2026-11-10T14:08:41.9715445Z npm error 404
+2026-11-10T14:08:41.9715753Z npm error 404  'dsh-cyberdeck@0.1.3' is not in this registry.
+2026-11-10T14:08:41.9716010Z npm error 404
+2026-11-10T14:08:41.9716258Z npm error 404 Note that you can also install from a
+2026-11-10T14:08:41.9716585Z npm error 404 tarball, folder, http url, or git url.
+2026-11-10T14:08:41.9720555Z npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-10T14_08_40_557Z-debug-0.log
+2026-11-10T14:08:41.9903685Z ##[error]Process completed with exit code 1.

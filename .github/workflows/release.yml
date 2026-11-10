@@ -86,12 +86,11 @@ jobs:
           fi
 
   npm-publish:
-    # 可选：仓库里配了 NPM_TOKEN secret 才会真的发 npm；没配就打印一句跳过。
-    # 建议用 npm 的 Automation token（绕过 2FA 交互）。
+    # 可选：仓库里配了 NPM_TOKEN secret 才会真的发 npm；没配就在脚本里跳过。
+    # （不用 step 级 if 判 secret：env 上下文在 if 里拿不到 job env，未配置时
+    #   条件会被当成真，反而真的去 npm publish 然后 401/404 失败。）
     needs: release
     runs-on: ubuntu-latest
-    env:
-      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -102,16 +101,17 @@ jobs:
           node-version: 22
           registry-url: https://registry.npmjs.org
 
-      - name: Publish to npm
-        if: ${{ env.NODE_AUTH_TOKEN != '' }}
+      - name: Publish to npm (skipped without NPM_TOKEN)
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
+          if [ -z "${NODE_AUTH_TOKEN}" ]; then
+            echo "仓库没有配置 NPM_TOKEN secret，跳过 npm 发布（只发 GitHub Release）"
+            exit 0
+          fi
           version="$(node -p 'require("./package.json").version')"
           if npm view "dsh-cyberdeck@${version}" version >/dev/null 2>&1; then
             echo "dsh-cyberdeck@${version} 已经在 npm 上，跳过发布"
-          else
-            npm publish --access public
+            exit 0
           fi
-
-      - name: Skip npm publish (no NPM_TOKEN secret)
-        if: ${{ env.NODE_AUTH_TOKEN == '' }}
-        run: echo "仓库没有配置 NPM_TOKEN secret，跳过 npm 发布（只发 GitHub Release）"
+          npm publish --access public

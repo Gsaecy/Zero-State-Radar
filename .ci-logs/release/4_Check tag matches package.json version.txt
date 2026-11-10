@@ -1,0 +1,13 @@
+﻿2026-11-10T14:08:28.0882646Z ##[group]Run version="$(node -p 'require("./package.json").version')"
+2026-11-10T14:08:28.0883763Z [36;1mversion="$(node -p 'require("./package.json").version')"[0m
+2026-11-10T14:08:28.0884549Z [36;1mtag="${TAG#v}"[0m
+2026-11-10T14:08:28.0885219Z [36;1mecho "package.json version: $version, tag: $TAG"[0m
+2026-11-10T14:08:28.0885949Z [36;1mif [ "$version" != "$tag" ]; then[0m
+2026-11-10T14:08:28.0886795Z [36;1m  echo "::error::tag $TAG does not match package.json version $version"[0m
+2026-11-10T14:08:28.0887540Z [36;1m  exit 1[0m
+2026-11-10T14:08:28.0888103Z [36;1mfi[0m
+2026-11-10T14:08:28.0934727Z shell: /usr/bin/bash -e {0}
+2026-11-10T14:08:28.0935525Z env:
+2026-11-10T14:08:28.0936098Z   TAG: v0.1.3
+2026-11-10T14:08:28.0936701Z ##[endgroup]
+2026-11-10T14:08:28.1302529Z package.json version: 0.1.3, tag: v0.1.3
