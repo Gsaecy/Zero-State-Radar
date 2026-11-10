@@ -1,0 +1,67 @@
+name: release
+
+# 打 tag 即发布：打包预构建 tarball（npm pack），上传成 Release 附件。
+# 附件名固定为 dsh-cyberdeck.tgz，安装 URL 依赖这个固定名：
+#   https://github.com/Gsaecy/Zero-State-Radar/releases/latest/download/dsh-cyberdeck.tgz
+#
+# 用法：package.json 的 version 先改好并提交，然后
+#   git tag -a v0.1.2 -m "Zero-State Radar v0.1.2" && git push origin v0.1.2
+# 想自定义 Release 说明就放 release-notes/<tag>.md（例如 release-notes/v0.1.2.md），
+# 没有该文件时用 GitHub 自动生成的变更说明。
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Check tag matches package.json version
+        run: |
+          version="$(node -p 'require("./package.json").version')"
+          tag="${GITHUB_REF_NAME#v}"
+          echo "package.json version: $version, tag: $GITHUB_REF_NAME"
+          if [ "$version" != "$tag" ]; then
+            echo "::error::tag $GITHUB_REF_NAME does not match package.json version $version"
+            exit 1
+          fi
+
+      - name: Pack the prebuilt bundle
+        run: |
+          npm pack
+          mv "dsh-cyberdeck-${GITHUB_REF_NAME#v}.tgz" dsh-cyberdeck.tgz
+          # 必须是 npm pack 产物（根目录为 package/），否则 pnpm 装不上
+          tar -tzf dsh-cyberdeck.tgz > /tmp/tarball-contents.txt
+          grep -qx 'package/cordis.patch.yml' /tmp/tarball-contents.txt
+          grep -qx 'package/lib/client.js' /tmp/tarball-contents.txt
+          ls -l dsh-cyberdeck.tgz
+          sha256sum dsh-cyberdeck.tgz
+
+      - name: Create or refresh the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" dsh-cyberdeck.tgz --clobber
+          else
+            if [ -f "release-notes/${GITHUB_REF_NAME}.md" ]; then
+              gh release create "$GITHUB_REF_NAME" dsh-cyberdeck.tgz \
+                --title "Zero-State Radar $GITHUB_REF_NAME" \
+                --notes-file "release-notes/${GITHUB_REF_NAME}.md"
+            else
+              gh release create "$GITHUB_REF_NAME" dsh-cyberdeck.tgz \
+                --title "Zero-State Radar $GITHUB_REF_NAME" \
+                --generate-notes
+            fi
+          fi

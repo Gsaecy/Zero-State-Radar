@@ -110,13 +110,22 @@ plugin_manager install_bundle target=https://github.com/Gsaecy/Zero-State-Radar/
 
 ### 发布新版本
 
+1. 改 `package.json` 的 `version`，在 [CHANGELOG.md](CHANGELOG.md) 记一笔，提交并推送；
+2. 打 tag 并推送，CI 会自动打包并发 Release：
+
 ```bash
-npm pack                       # 产出 dsh-cyberdeck-<version>.tgz
+git tag -a v0.1.2 -m "Zero-State Radar v0.1.2"
+git push origin v0.1.2
 ```
 
-把 tarball 重命名为 `dsh-cyberdeck.tgz` 再上传到 GitHub Release：安装 URL 依赖
-`releases/latest/download/dsh-cyberdeck.tgz` 这个固定附件名。tarball 必须是
-`npm pack` 产物（根目录为 `package/`），否则 pnpm 装不上。
+[`.github/workflows/release.yml`](.github/workflows/release.yml) 会：校验 tag 与
+`package.json` 版本一致 → `npm pack` → 把产物改名成 `dsh-cyberdeck.tgz` →
+创建/更新对应 tag 的 Release 并上传附件。
+
+- 想自定义 Release 说明，放一个 `release-notes/v0.1.2.md`（没有则用 GitHub 自动生成的变更说明）；
+- 手动发布也可以：`npm pack` → 产物改名成 `dsh-cyberdeck.tgz` 上传到 Release。
+  安装 URL 依赖这个固定附件名（`releases/latest/download/dsh-cyberdeck.tgz`）；
+- tarball 必须是 `npm pack` 产物（根目录为 `package/`），否则 pnpm 装不上。
 
 ## 触发条件
 

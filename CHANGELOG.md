@@ -1,5 +1,12 @@
 # Changelog
 
+## 未发布
+
+### 工程
+- 新增 `.github/workflows/release.yml`：推送 `v*` tag 时校验版本号、`npm pack`
+  打包成 `dsh-cyberdeck.tgz` 并创建/更新对应 Release；支持 `release-notes/<tag>.md`
+  自定义发布说明。
+
 ## v0.1.1 — 2026-11-10
 
 纯文档 / 元数据版本，皮肤本身没有改动。
@@ -9,7 +16,7 @@
   或 GitHub Release 的 tarball 直达链接。
 - 补充大陆网络下从 Release 安装失败的排查：`release-assets.githubusercontent.com`
   常被解析成 `127.0.0.1`，pnpm 报 `fetch failed`；给了代理、本地目录、GitHub 代理镜像
-  三条替代路径（附 v0.1.0 包的 SHA-256）。
+  三条替代路径（附本包的 SHA-256）。
 - `package.json` 声明 `engines.dsh >= 0.2.0-rc.1`，插件市场与 `plugin_manager` 可以据此
   判断兼容性。
 
