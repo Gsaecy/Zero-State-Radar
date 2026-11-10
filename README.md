@@ -48,6 +48,12 @@ English: a cyberpunk HUD theme for DeepSeek Harness, with a *Zero-State Radar* �
 
 否则浅色主题会让下拉菜单变成一块白 70% 的灰白板。
 
+### 5. 文件卡片
+
+对话里的文件展示也跟随主题：本轮「已编辑 N 个文件」清单、交付文件卡片（`.md` / 图片 / 代码 / PDF / 表格……）、用户消息里的附件卡片，都是深蓝面板 + 青色描边，文件类型图标统一走主题色并带轻微霓虹，不再出现白底白图标的刺眼块。
+
+> 这些组件的浅色底来自 `--dsw-static-neutral-*`（不是 alias token）。应用处于浅色主题、皮肤处于夜晚模式时它们不跟随深色 token，会露白；本皮肤用组件自带的数据属性（`[data-changed-files]` / `[data-presented-file]`）定位并覆盖，类名哈希随版本变化也不受影响。
+
 ---
 
 ## 安装
@@ -96,10 +102,9 @@ plugin_manager install_bundle target=https://github.com/Gsaecy/Zero-State-Radar/
 >   plugin_manager install_bundle target=https://gh-proxy.com/https://github.com/Gsaecy/Zero-State-Radar/releases/latest/download/dsh-cyberdeck.tgz
 >   ```
 >
->   v0.1.1 预构建包的 SHA-256 是
->   `53ad5328d7842267f05d1da72cf530b94c77239ae55930e714d8bc9c92790eee`
->   （668805 字节），下载后可以比对；Release 附件被 CI 重新打包后哈希会变，
->   以 Release 页面当前附件为准。
+>   Release 附件由 CI 在打 tag 时重新打包，哈希会随构建变化；要校验就取
+>   `GET /repos/Gsaecy/Zero-State-Radar/releases/latest` 返回里该附件的
+>   `assets[].digest`（`sha256:…`）与下载到的文件比对。
 >
 > 插件市场里的一键安装走的也是同一条 Release 链接，受同一个网络问题影响。
 

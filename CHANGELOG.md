@@ -1,6 +1,15 @@
 # Changelog
 
-## 未发布
+## v0.1.2 — 2026-11-10
+
+### 主题
+- 对话里的文件卡片跟随主题配色：夜晚模式（或应用深色主题）下，「已编辑 N 个文件」
+  清单和交付文件卡片不再是白底 / 白图标块，改用面板底色 + 青色描边 + 淡青图标底。
+- 文件类型图标（`.md`、图片、代码、PDF、表格……）统一走主题色
+  `--dsh-file-type-icon-color`，并加轻微霓虹投影。
+- 这些组件的浅色底来自 `--dsw-static-neutral-*`（不是 alias token），应用处于浅色
+  主题、皮肤处于夜晚模式时会露白；本次用组件自带的数据属性
+  （`[data-changed-files]` / `[data-presented-file]`）定位，类名哈希变化不影响。
 
 ### 工程
 - 新增 `.github/workflows/release.yml`：推送 `v*` tag 时校验版本号、`npm pack`
