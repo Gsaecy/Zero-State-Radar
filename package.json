@@ -1,6 +1,6 @@
 {
   "name": "dsh-cyberdeck",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Zero-State Radar — cyberpunk HUD theme for DeepSeek Harness, with a radar sweep, dotted world map and telemetry panel on the empty chat.",
   "keywords": [
     "dsh",

@@ -96,9 +96,9 @@ plugin_manager install_bundle target=https://github.com/Gsaecy/Zero-State-Radar/
 >   plugin_manager install_bundle target=https://gh-proxy.com/https://github.com/Gsaecy/Zero-State-Radar/releases/latest/download/dsh-cyberdeck.tgz
 >   ```
 >
->   v0.1.0 预构建包的 SHA-256 是
->   `2da8a623936eaa027ff580ed07898bd84dddec45e400570001e3815e71778822`
->   （666916 字节），下载后可以比对。
+>   v0.1.1 预构建包的 SHA-256 是
+>   `266b13fead0b57ae59bfa3317aeb699c049b85ead81b2529bd54013e922852e8`
+>   （668913 字节），下载后可以比对。
 >
 > 插件市场里的一键安装走的也是同一条 Release 链接，受同一个网络问题影响。
 

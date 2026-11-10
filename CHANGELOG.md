@@ -1,6 +1,8 @@
 # Changelog
 
-## 未发布
+## v0.1.1 — 2026-11-10
+
+纯文档 / 元数据版本，皮肤本身没有改动。
 
 ### 文档 / 元数据
 - 安装说明改成 `plugin_manager install_bundle` 的真实用法：`target` 是本仓库绝对路径，
