@@ -52,19 +52,71 @@ English: a cyberpunk HUD theme for DeepSeek Harness, with a *Zero-State Radar* �
 
 ## 安装
 
+本插件是一个 DSH bundle：`package.json` 里声明了 `dsh.bundle.patch`（宿主侧空壳）
+和 `dsh.client`（web 客户端）。装进 profile 就是两件事：加一条依赖、把包名加进
+`dsh.profile.bundles`。DSH 的 `plugin_manager`（`action: install_bundle`）一次做完。
+
+### 方式 1：从本地目录安装（推荐，离线可用）
+
+`target` 是**本仓库根目录的绝对路径**（`file:` / `link:` 前缀也可以，但后面必须
+跟绝对路径）：
+
 ```bash
-# 从本地目录安装（开发时）
-# 在 DSH 里执行：
-plugin_manager install_bundle target=file:/绝对路径/dsh-cyberdeck
+plugin_manager install_bundle target=C:\Users\你\Downloads\zero-state-radar
 ```
 
-或直接用预构建包（免构建授权）：
+等价命令行：
+
+```bash
+dsh plugin --profile desktop add C:\Users\你\Downloads\zero-state-radar
+```
+
+这是 `link:` 安装：profile 里的 `node_modules/dsh-cyberdeck` 指向这个目录，改完
+`lib/client.js` 刷新页面（<kbd>Ctrl</kbd>+<kbd>R</kbd> / <kbd>⌘</kbd>+<kbd>R</kbd>）
+就生效，不用重装。
+
+### 方式 2：从 GitHub Release 装预构建包
 
 ```bash
 plugin_manager install_bundle target=https://github.com/Gsaecy/Zero-State-Radar/releases/latest/download/dsh-cyberdeck.tgz
 ```
 
-安装后重启 DSH，或刷新页面（⌘R）。
+> **大陆网络注意**：这个链接最终跳到 `release-assets.githubusercontent.com`，
+> 该域名常被解析成 `127.0.0.1`，pnpm 就会报
+> `[ERROR] fetch failed` / `ECONNREFUSED ...release-assets.githubusercontent.com`。
+> 这是下载链路的问题，不是插件本身的问题。三条路任选：
+>
+> - 让 pnpm 走代理再装：在 `~/.npmrc` 里写 `proxy=` / `https-proxy=`，或设置
+>   `HTTP_PROXY` / `HTTPS_PROXY` 环境变量。注意 pnpm **不读** git 的
+>   `http.proxy` 配置，所以只配了 `git config` 的话照样会失败。
+> - 或者用方式 1 从本地目录装，完全不联网。
+> - 或者给 Release 链接加第三方 GitHub 代理前缀（镜像会改写下载来源，自行评估）：
+>
+>   ```bash
+>   plugin_manager install_bundle target=https://gh-proxy.com/https://github.com/Gsaecy/Zero-State-Radar/releases/latest/download/dsh-cyberdeck.tgz
+>   ```
+>
+>   v0.1.0 预构建包的 SHA-256 是
+>   `2da8a623936eaa027ff580ed07898bd84dddec45e400570001e3815e71778822`
+>   （666916 字节），下载后可以比对。
+>
+> 插件市场里的一键安装走的也是同一条 Release 链接，受同一个网络问题影响。
+
+### 安装之后
+
+- 客户端 bundle 在页面刷新后加载；若宿主侧条目未生效，重启一次 DSH。
+- 临时关掉皮肤：<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>K</kbd>，或控制台
+  `__cyberdeck.off()`。
+
+### 发布新版本
+
+```bash
+npm pack                       # 产出 dsh-cyberdeck-<version>.tgz
+```
+
+把 tarball 重命名为 `dsh-cyberdeck.tgz` 再上传到 GitHub Release：安装 URL 依赖
+`releases/latest/download/dsh-cyberdeck.tgz` 这个固定附件名。tarball 必须是
+`npm pack` 产物（根目录为 `package/`），否则 pnpm 装不上。
 
 ## 触发条件
 

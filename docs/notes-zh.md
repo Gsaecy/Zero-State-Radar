@@ -40,8 +40,13 @@
 
 ## 安装 / 卸载
 
-- 安装（profile = desktop）：`dsh plugin --profile desktop add link:<本目录>`
-- 也可用 DSH 设置里的插件管理安装本目录。
+- 安装（profile = desktop）：`plugin_manager install_bundle target=<本目录绝对路径>`；
+  等价命令行 `dsh plugin --profile desktop add <本目录绝对路径>`（会落成 `link:` 依赖）。
+- 也可用 DSH 设置 → 插件里的插件管理安装本目录。
+- 从 GitHub Release 装：`target=https://github.com/Gsaecy/Zero-State-Radar/releases/latest/download/dsh-cyberdeck.tgz`。
+  大陆网络常把 `release-assets.githubusercontent.com` 解析成 `127.0.0.1`，pnpm 会报
+  `fetch failed`——给 pnpm 配代理（`~/.npmrc` 的 `proxy=` / `https-proxy=`，或环境变量
+  `HTTP_PROXY` / `HTTPS_PROXY`），或直接用本地目录安装。
 - 关掉皮肤（临时）：`Ctrl + Alt + K`，或控制台 `__cyberdeck.off()`；状态记在 `localStorage['dsh.cyberdeck.enabled']`。
 - 彻底卸载：从 profile 依赖中移除 `dsh-cyberdeck` 并刷新页面。
 

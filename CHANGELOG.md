@@ -1,5 +1,16 @@
 # Changelog
 
+## 未发布
+
+### 文档 / 元数据
+- 安装说明改成 `plugin_manager install_bundle` 的真实用法：`target` 是本仓库绝对路径，
+  或 GitHub Release 的 tarball 直达链接。
+- 补充大陆网络下从 Release 安装失败的排查：`release-assets.githubusercontent.com`
+  常被解析成 `127.0.0.1`，pnpm 报 `fetch failed`；给了代理、本地目录、GitHub 代理镜像
+  三条替代路径（附 v0.1.0 包的 SHA-256）。
+- `package.json` 声明 `engines.dsh >= 0.2.0-rc.1`，插件市场与 `plugin_manager` 可以据此
+  判断兼容性。
+
 ## v0.1.0 — 2026-11-07
 
 首个公开版本。
