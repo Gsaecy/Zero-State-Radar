@@ -1,0 +1,6 @@
+# 统一文本行尾为 LF：`npm pack` 打出的 tarball 才是可复现的，
+# 不会因为 Windows 检出的 CRLF 与 CI 的 LF 产生不同哈希。
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.ico binary

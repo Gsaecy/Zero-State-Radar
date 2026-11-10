@@ -97,8 +97,9 @@ plugin_manager install_bundle target=https://github.com/Gsaecy/Zero-State-Radar/
 >   ```
 >
 >   v0.1.1 预构建包的 SHA-256 是
->   `266b13fead0b57ae59bfa3317aeb699c049b85ead81b2529bd54013e922852e8`
->   （668913 字节），下载后可以比对。
+>   `53ad5328d7842267f05d1da72cf530b94c77239ae55930e714d8bc9c92790eee`
+>   （668805 字节），下载后可以比对；Release 附件被 CI 重新打包后哈希会变，
+>   以 Release 页面当前附件为准。
 >
 > 插件市场里的一键安装走的也是同一条 Release 链接，受同一个网络问题影响。
 
