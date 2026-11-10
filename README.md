@@ -123,6 +123,8 @@ git push origin v0.1.2
 创建/更新对应 tag 的 Release 并上传附件。
 
 - 想自定义 Release 说明，放一个 `release-notes/v0.1.2.md`（没有则用 GitHub 自动生成的变更说明）；
+- 想修某个已发布版本的附件、或补发说明：Actions → **release** → **Run workflow**，
+  填上已有 tag（如 `v0.1.1`）；Release 已存在时只覆盖附件，不会新建 Release；
 - 手动发布也可以：`npm pack` → 产物改名成 `dsh-cyberdeck.tgz` 上传到 Release。
   安装 URL 依赖这个固定附件名（`releases/latest/download/dsh-cyberdeck.tgz`）；
 - tarball 必须是 `npm pack` 产物（根目录为 `package/`），否则 pnpm 装不上。
