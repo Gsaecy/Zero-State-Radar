@@ -1,8 +1,0 @@
-2026-11-10T14:08:02.7610000Z Job is waiting for a hosted runner to come online.
-2026-11-10T14:08:02.7440000Z Evaluating release.if
-2026-11-10T14:08:02.7440000Z Evaluating: success()
-2026-11-10T14:08:02.7440000Z Result: true
-2026-11-10T14:08:02.7620000Z Job is about to start running on the hosted runner: GitHub Actions 1000004247
-2026-11-10T14:08:02.7450000Z Requested labels: ubuntu-latest
-2026-11-10T14:08:02.7450000Z Job defined at: Gsaecy/Zero-State-Radar/.github/workflows/release.yml@refs/tags/v0.1.3
-2026-11-10T14:08:02.7450000Z Waiting for a runner to pick up this job...

@@ -3,3 +3,8 @@ node_modules
 *.tgz
 # 本地验证用的截图，不进仓库
 /*.png
+
+# 本地 CI 日志 / 临时脚本
+.ci-logs/
+.ci-logs.zip
+.watch-ci.mjs
